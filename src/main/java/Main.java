@@ -17,21 +17,11 @@ public class Main {
             }
         }
 
-//        System.out.println("Какой товар будем добавлять?\nВведите название:");
-//        String nameProduct = scanner.next();
-//        System.out.println("Введите цену в рублях с копейками:");
-//        double priceProduct = scanner.nextDouble();
-//        Product product = new Product(nameProduct, priceProduct);
-
-
-
         Calculator calculator = new Calculator();
         calculator.calculate(howManyPeople);
 
         System.out.println(calculator.listProduct);
-        System.out.println(calculator.sum / howManyPeople);
-//        System.out.println(product.name + " " + product.price + "рублей");
-
+        System.out.println("Каждый гость должен заплатить: " + calculator.sumForGuest + " рублей");
 
         scanner.close();
     }
