@@ -1,4 +1,3 @@
-import org.w3c.dom.ls.LSOutput;
 
 import java.util.Scanner;
 
@@ -21,7 +20,8 @@ public class Main {
         calculator.calculate(howManyPeople);
 
         System.out.println(calculator.listProduct);
-        System.out.println("Каждый гость должен заплатить: " + calculator.sumForGuest + " рублей");
+        Formater formatter = new Formater();
+        formatter.format(calculator.sumForGuest);
 
         scanner.close();
     }
