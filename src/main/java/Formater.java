@@ -1,10 +1,10 @@
 public class Formater {
-    public void format(double number){
+    public static String format(double number) {
         double roundNumber = Math.floor(number);
         String end = "";
-        if ((int)roundNumber % 100 >= 11 && (int) roundNumber % 100 <= 19) {
+        if ((int) roundNumber % 100 >= 11 && (int) roundNumber % 100 <= 19) {
             end = "лей";
-        } else  {
+        } else {
             switch ((int) roundNumber % 10) {
                 case 1:
                     end = "ль";
@@ -20,6 +20,6 @@ public class Formater {
             }
         }
 
-        System.out.println(String.format("Каждый гость должен заплатить %.2f руб%s", number, end));
+        return String.format("Каждый гость должен заплатить %.2f руб%s", number, end);
     }
 }
