@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Calculator {
@@ -10,23 +11,32 @@ public class Calculator {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Какой товар будем добавлять?\nВведите название:");
-            String nameProduct = scanner.next();
+            String nameProduct = scanner.nextLine();
             if (nameProduct.equalsIgnoreCase("завершить")) {
                 break;
             }
+
             while (true) {
                 System.out.println("Введите цену:");
-                double priceProduct = scanner.nextDouble();
-                if (priceProduct < 0) {
-                    System.out.println("Стоимость не может быть отрицательной, поробуйте еще раз");
-                } else {
-                    sum += priceProduct;
-                    break;
+                double priceProduct = 0;
+                try {
+                    priceProduct = scanner.nextDouble();
+                    scanner.nextLine();
+                    if (priceProduct < 0) {
+                        System.out.println("Стоимость не может быть отрицательной, поробуйте еще раз");
+                    } else {
+                        sum += priceProduct;
+                        break;
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Введите корректное значение");
+                    scanner.nextLine();
                 }
             }
+
             listProduct = listProduct + "\n" + nameProduct;
             System.out.println("Товар успешно добавлен!\nХотите добавить еще товар?\nДля завершения введите \"завершить\"");
-            if (scanner.next().equalsIgnoreCase("завершить")) {
+            if (scanner.nextLine().equalsIgnoreCase("завершить")) {
                 break;
             }
         }
